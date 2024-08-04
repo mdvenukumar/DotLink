@@ -1,0 +1,185 @@
+<header class="header">
+  <div class="container header-content">
+    <div class="logo-container" style="display: flex; align-items: center; gap: 10px;">
+      <img src="https://cdn-icons-png.flaticon.com/128/9872/9872434.png" alt=".Link Logo" class="logo">
+      <h1>.Link</h1>
+    </div>
+    <nav class="main-nav">
+      <a href="#" class="nav-item">Home</a>
+      <a href="#" class="nav-item">Plans</a>
+      <a href="#" class="nav-item">Support</a>
+      <a href="#" class="nav-item">About Us</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <h1>Experience Next-Gen Connectivity</h1>
+    <p>Unleash the power of .Link's cutting-edge mobile plans</p>
+    <a href="#plans" class="cta-button">Explore Plans</a>
+    <a href="/user-form" class="cta-button1">Get a Number</a>
+  </div>
+</section>
+
+<section id="plans" class="plans-section">
+  <div class="container">
+    <h2 class="section-title">Choose Your Perfect Plan</h2>
+    <div class="tabs">
+      <div class="tab" *ngFor="let tab of tabs" (click)="selectTab(tab)" [class.active]="selectedTab === tab.value">
+        {{ tab.label }}
+      </div>
+    </div>
+
+    <div class="plans-grid">
+      <ng-container *ngIf="selectedTab === 'True 5G'">
+        <ng-container *ngIf="true5GPlans.length > 0; else noData">
+          <div *ngFor="let plan of true5GPlans" class="plan-card">
+            <div class="plan-icon">
+              <img src="https://cdn-icons-png.flaticon.com/128/3006/3006236.png" alt="5G Icon">
+            </div>
+            <div class="plan-header">
+              <h3 class="plan-title">₹{{ plan.price }}</h3>
+              <span class="plan-duration">{{ plan.validity }}</span>
+            </div>
+            <ul class="plan-features">
+              <li><i class="fas fa-signal"></i> {{ plan.data }}</li>
+              <li><i class="fas fa-infinity"></i> Unlimited Calls</li>
+              <li><i class="fas fa-tv"></i> {{ plan.subscription }}</li>
+            </ul>
+            <button class="choose-plan-btn" [routerLink]="['/validate']" (click)="choosePlan(plan)">Choose Plan</button>
+          </div>
+        </ng-container>
+        <ng-template #noData>
+          <p>No plans available.</p>
+        </ng-template>
+      </ng-container>
+
+      <ng-container *ngIf="selectedTab === 'Data Booster'">
+        <ng-container *ngIf="dataBoosterPlans.length > 0; else noData">
+          <div *ngFor="let plan of dataBoosterPlans" class="plan-card">
+            <div class="plan-icon">
+              <img src="https://cdn-icons-png.flaticon.com/128/5655/5655477.png" alt="Data Booster Icon">
+            </div>
+            <div class="plan-header">
+              <h3 class="plan-title">₹{{ plan.price }}</h3>
+              <span class="plan-duration">{{ plan.validity }}</span>
+            </div>
+            <ul class="plan-features">
+              <li><i class="fas fa-signal"></i> {{ plan.data }}</li>
+              <li><i class="fas fa-infinity"></i> Unlimited Calls</li>
+              <li><i class="fas fa-tv"></i> {{ plan.subscription }}</li>
+            </ul>
+            <button class="choose-plan-btn" [routerLink]="['/validate']" (click)="choosePlan(plan)">Choose Plan</button>
+          </div>
+        </ng-container>
+      </ng-container>
+
+      <ng-container *ngIf="selectedTab === 'Popular'">
+        <ng-container *ngIf="popularPlans.length > 0; else noData">
+          <div *ngFor="let plan of popularPlans"  class="plan-card" >
+            <div class="plan-icon">
+              <img src="https://cdn-icons-png.flaticon.com/128/16435/16435610.png" alt="Popular Plan Icon">
+            </div>
+            <div class="plan-header">
+              <h3 class="plan-title">₹{{ plan.price }}</h3>
+              <span class="plan-duration">{{ plan.validity }}</span>
+            </div>
+            <ul class="plan-features">
+              <li><i class="fas fa-signal"></i> {{ plan.data }}</li>
+              <li><i class="fas fa-infinity"></i> Unlimited Calls</li>
+              <li><i class="fas fa-tv"></i> {{ plan.subscription }}</li>
+            </ul>
+            <button class="choose-plan-btn" [routerLink]="['/validate']" (click)="choosePlan(plan)">Choose Plan</button>
+          </div>
+        </ng-container>
+      </ng-container>
+
+      <ng-container *ngIf="selectedTab === 'Value'">
+        <ng-container *ngIf="valuePlans.length > 0; else noData">
+          <div *ngFor="let plan of valuePlans" class="plan-card">
+            <div class="plan-icon">
+              <img src="https://cdn-icons-png.flaticon.com/128/12991/12991397.png" alt="Value Plan Icon">
+            </div>
+            <div class="plan-header">
+              <h3 class="plan-title">₹{{ plan.price }}</h3>
+              <span class="plan-duration">{{ plan.validity }}</span>
+            </div>
+            <ul class="plan-features">
+              <li><i class="fas fa-signal"></i> {{ plan.data }}</li>
+              <li><i class="fas fa-infinity"></i> Unlimited Calls</li>
+              <li><i class="fas fa-tv"></i> {{ plan.subscription }}</li>
+            </ul>
+            <button class="choose-plan-btn" [routerLink]="['/validate']" (click)="choosePlan(plan)">Choose Plan</button>
+          </div>
+        </ng-container>
+      </ng-container>
+
+      <ng-container *ngIf="selectedTab === 'Annual'">
+        <ng-container *ngIf="annualPlans.length > 0; else noData">
+          <div *ngFor="let plan of annualPlans" class="plan-card">
+            <div class="plan-icon">
+              <img src="https://cdn-icons-png.flaticon.com/128/6755/6755732.png" alt="Annual Plan Icon">
+            </div>
+            <div class="plan-header">
+              <h3 class="plan-title">₹{{ plan.price }}</h3>
+              <span class="plan-duration">{{ plan.validity }}</span>
+            </div>
+            <ul class="plan-features">
+              <li><i class="fas fa-signal"></i> {{ plan.data }}</li>
+              <li><i class="fas fa-infinity"></i> Unlimited Calls</li>
+              <li><i class="fas fa-tv"></i> {{ plan.subscription }}</li>
+            </ul>
+            <button class="choose-plan-btn" [routerLink]="['/validate']" (click)="choosePlan(plan)">Choose Plan</button>
+          </div>
+        </ng-container>
+      </ng-container>
+
+      <ng-template #noData>
+        <div class="no-data">
+          <img src="https://via.placeholder.com/150x150?text=No+Plans" alt="No Plans Available">
+          <p>No plans available at the moment. Please check back later.</p>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</section>
+
+<section class="features-section">
+  <div class="container">
+    <h2 class="section-title">Why Choose .Link?</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <img src="https://cdn-icons-png.flaticon.com/128/10700/10700902.png" alt="High Speed">
+        <h3>Lightning-Fast Speeds</h3>
+        <p>Experience blazing-fast 5G connectivity like never before.</p>
+      </div>
+      <div class="feature-card">
+        <img src="https://cdn-icons-png.flaticon.com/128/6633/6633297.png" alt="Wide Coverage">
+        <h3>Nationwide Coverage</h3>
+        <p>Stay connected anywhere with our expansive network coverage.</p>
+      </div>
+      <div class="feature-card">
+        <img src="https://cdn-icons-png.flaticon.com/128/5166/5166987.png" alt="24/7 Support">
+        <h3>24/7 Customer Support</h3>
+        <p>Our dedicated team is always here to assist you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <div class="logo-container" style="display: flex; align-items: center; gap: 10px;justify-content: center; ">
+          <img src="https://cdn-icons-png.flaticon.com/128/9872/9872434.png" alt=".Link Logo" class="logo">
+          <h1>.Link</h1>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 .Link Pre-Paid Mobile Recharge. All rights reserved.</p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,200 @@
+/* Container for the entire layout */
+.user-form-container {
+    display: flex;
+    height: 100vh; /* Full viewport height */
+    padding: 20px;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f2f5; /* Light gray background for a modern look */
+  }
+  
+  /* Form section styling */
+  .form-section {
+    flex: 1;
+    max-width: 50%; /* 50% width for form */
+    padding: 40px;
+    background-color: #ffffff; /* White background for form section */
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    margin-right: 20px;
+  }
+  
+  /* Logo styling */
+  .logo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .logo img {
+    width: 50px; /* Refined size for the logo */
+    height: 50px;
+    margin-right: 15px;
+  }
+  
+  .logo h1 {
+    font-size: 2.2em;
+    margin: 0;
+    color: #007bff; /* Logo text color */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  /* Form section headings and intro text */
+  .form-section h2 {
+    margin-top: 0;
+    font-size: 2em;
+    color: #333; /* Darker text color */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .intro-text {
+    margin-bottom: 20px;
+    font-size: 1em;
+    color: #666; /* Subtle gray for text */
+    line-height: 1.6;
+  }
+  
+  /* Form group styling */
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 500;
+    font-size: 1.1em; /* Larger font size for labels */
+    color: #555;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px; /* Rounded corners for input fields */
+    font-size: 1em; /* Standard font size for input */
+    box-sizing: border-box;
+    background-color: #fafafa; /* Light background for input */
+  }
+  
+  .form-group .error {
+    color: #d9534f; /* Error text color */
+    font-size: 0.875em;
+    margin-top: 5px;
+  }
+  
+  /* Form actions */
+  .form-actions {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+  
+  .action-button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  }
+  
+  .generate-button {
+    background-color: #28a745; /* Green background */
+  }
+  
+  .copy-button {
+    background-color: #ffc107; /* Yellow background */
+  }
+  
+  .submit-button {
+    background-color: #007bff; /* Blue background */
+  }
+  
+  .back-button {
+    background-color: #6c757d; /* Grey background */
+  }
+  
+  .action-button:hover {
+    transform: scale(1.03); /* Slightly increase size on hover */
+  }
+  
+  .generate-button:hover {
+    background-color: #218838; /* Darker green on hover */
+  }
+  
+  .copy-button:hover {
+    background-color: #e0a800; /* Darker yellow on hover */
+  }
+  
+  .submit-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+  }
+  
+  .back-button:hover {
+    background-color: #5a6268; /* Darker grey on hover */
+  }
+  
+  /* Image section styling */
+  .image-section {
+    flex: 1;
+    max-width: 50%; /* 50% width for image */
+    padding: 0; /* Remove padding for image section */
+    position: relative;
+  }
+  
+  .image-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    border-radius: 12px; /* Rounded corners for image container */
+    overflow: hidden; /* Hide any overflow */
+  }
+  
+  .image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover; /* Cover the container while maintaining aspect ratio */
+  }
+  
+  .image-overlay {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    max-width: 80%;
+  }
+  
+  .image-overlay h2 {
+    margin-top: 0;
+    font-size: 1.5em;
+  }
+  
+  .image-overlay p {
+    margin: 0;
+    font-size: 1em;
+    line-height: 1.4;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .user-form-container {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  
+    .form-section,
+    .image-section {
+      max-width: 100%;
+      margin-bottom: 20px;
+    }
+  }
+  

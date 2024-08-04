@@ -1,0 +1,38 @@
+<div class="user-form-container">
+    <div class="form-section">
+      <div class="logo">
+        <img src="https://cdn-icons-png.flaticon.com/128/9872/9872434.png" alt=".Link Logo">
+        <h1>.Link</h1>
+      </div>
+  
+      <h2>Welcome to .Link</h2>
+      <p class="intro-text">Please fill out the form below to generate your phone number. This service helps you quickly create a temporary contact number for various needs.</p>
+      
+      <form (ngSubmit)="saveUser()">
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input id="email" type="email" [(ngModel)]="email" name="email" placeholder="Enter your email" required>
+          <div *ngIf="email && !isValidEmail(email)" class="error">Invalid email format</div>
+        </div>
+  
+        <div class="form-group">
+          <label for="phno">Generated Phone Number:</label>
+          <input id="phno" type="text" [(ngModel)]="phoneNumber" name="phno" readonly placeholder="Phone number will appear here">
+        </div>
+  
+        <div class="form-actions">
+          <button type="button" (click)="generatePhoneNumber()" class="action-button generate-button">Generate Phone Number</button>
+          <button type="button" (click)="copyToClipboard()" class="action-button copy-button">Copy to Clipboard</button>
+          <button type="submit" class="action-button submit-button">Submit</button>
+          <button type="button" (click)="goBack()" class="action-button back-button">Back to Home</button>
+        </div>
+      </form>
+    </div>
+  
+    <div class="image-section">
+      <div class="image-container">
+        <img src="https://thumbs.dreamstime.com/b/thank-you-choosing-us-banner-design-over-white-background-46977269.jpg" alt="Thank You Banner">
+      </div>
+    </div>
+  </div>
+  

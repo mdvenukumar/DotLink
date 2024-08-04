@@ -1,0 +1,83 @@
+<div class="validate-container">
+  <!-- Left Side: Form -->
+  <div class="form-container">
+    <div class="logo">
+      <img src="https://cdn-icons-png.flaticon.com/128/9872/9872434.png" alt=".Link Logo">
+      <h1>.Link</h1>
+    </div>
+
+    <!-- Phone Number Validation Form -->
+    <form [formGroup]="phoneNumberForm" (ngSubmit)="validatePhoneNumber()">
+      <h2>Validate Your Phone Number</h2>
+      
+      <label for="phoneNumber">Enter Phone Number:</label>
+      <input id="phoneNumber" formControlName="phoneNumber" type="text" placeholder="Enter your phone number">
+      
+      <button type="submit" [disabled]="phoneNumberForm.invalid">Validate</button>
+      
+      <div *ngIf="validationResult" class="error">
+        <p>{{ validationResult }}</p>
+      </div>
+    </form>
+
+    <!-- Payment Form -->
+    <div *ngIf="isPhoneNumberValid">
+      <h3>Selected Pack: ₹{{ selectedPack.cost }} - Validity: {{ selectedPack.validity }} days</h3>
+      
+      <form [formGroup]="paymentForm">
+        <label for="paymentMethod">Payment Method:</label>
+        <select id="paymentMethod" formControlName="paymentMethod" (change)="onPaymentMethodChange($event)">
+          <option value="card">Card</option>
+          <option value="upi">UPI</option>
+        </select>
+
+        <!-- UPI Options -->
+        <div *ngIf="paymentForm.value.paymentMethod === 'upi'" class="upi-options">
+          <label for="upiOption">Select UPI Option:</label>
+          <select id="upiOption" formControlName="upiOption">
+            <option value="phonepe">PhonePe</option>
+            <option value="gpay">Google Pay (GPay)</option>
+            <option value="paypal">PayPal</option>
+            <option value="other">Other UPI ID</option>
+          </select>
+
+          <div *ngIf="paymentForm.value.upiOption === 'other'">
+            <label for="upiId">UPI ID:</label>
+            <input id="upiId" formControlName="upiId" type="text" placeholder="Enter UPI ID">
+          </div>
+        </div>
+
+        <!-- Card Payment -->
+        <div *ngIf="paymentForm.value.paymentMethod === 'card'" class="card-payment">
+          <label for="cardNumber">Card Number:</label>
+          <input id="cardNumber" formControlName="cardNumber" type="text" placeholder="Enter card number">
+
+          <label for="expiryDate">Expiry Date:</label>
+          <input id="expiryDate" formControlName="expiryDate" type="text" placeholder="MM/YY">
+
+          <label for="cvv">CVV:</label>
+          <input id="cvv" formControlName="cvv" type="text" placeholder="CVV">
+        </div>
+
+        <button type="button" (click)="processPayment()" [disabled]="isProcessingPayment">
+          {{ isProcessingPayment ? 'Processing...' : 'Pay ₹' }}
+        </button>
+      </form>
+    </div>
+
+    <!-- Payment Success Message -->
+    <div *ngIf="paymentSuccess" class="success-message">
+      <p>Payment successful!</p>
+      <button (click)="goToHome()">Back to Home</button>
+    </div>
+  </div>
+
+  <!-- Right Side: Security Info -->
+  <div class="security-info">
+    <img src="https://storage.googleapis.com/gweb-uniblog-publish-prod/original_images/SID_FB_001.gif" alt="Secure and Safe">
+    <div class="security-text">
+      <h3>Secure and Safe</h3>
+      <p>Your transactions are protected with the highest level of security.</p>
+    </div>
+  </div>
+</div>
